@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Arc - Register Student</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f8fa;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .form-box {
+            background-color: #ffffff;
+            padding: 32px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            width: 360px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 24px;
+            color: #1e3a8a;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 18px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            background-color: #fefefe;
+            font-size: 14px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background-color: #1d4ed8;
+            color: white;
+            padding: 10px;
+            font-size: 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2563eb;
+        }
+
+        .link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .link a {
+            color: #1d4ed8;
+            text-decoration: none;
+        }
+
+        .link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-box">
+        <h2>Data Arc</h2>
+        <h2>Register New Student</h2>
+        <form action="/submit" method="POST">
+            <label>Name:</label>
+            <input type="text" name="name" required>
+
+            <label>Email:</label>
+            <input type="email" name="email" required>
+
+            <label>Department:</label>
+            <select name="dept" required>
+                <option value="CSE">CSE</option>
+                <option value="IT">IT</option>
+                <option value="Cyber">Cyber</option>
+                <option value="ECE">ECE</option>
+                <option value="AIDS">AIDS</option>
+            </select>
+
+            <label>Phone:</label>
+            <input type="number" name="phone" required>
+
+            <input type="submit" value="Submit">
+        </form>
+        <div class="link">
+            <a href="/students">View Registered Students</a>
+        </div>
+    </div>
+</body>
+</html>

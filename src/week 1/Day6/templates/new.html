@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>New Post</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f2f5;
+            padding: 2rem;
+        }
+        .form-box {
+            background: white;
+            padding: 2rem;
+            width: 500px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin-top: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        button {
+            margin-top: 1rem;
+            padding: 0.7rem 1.2rem;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #218838;
+        }
+        a {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-box">
+        <h1>📝 New Blog Post</h1>
+        <form method="POST">
+            <input type="text" name="title" placeholder="Enter title" required>
+            <textarea name="content" rows="6" placeholder="Enter content" required></textarea>
+            <button type="submit">Publish</button>
+        </form>
+        <a href="/">← Back</a>
+    </div>
+</body>
+</html>

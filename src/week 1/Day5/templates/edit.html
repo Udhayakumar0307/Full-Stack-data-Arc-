@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Student</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f8fa;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .form-box {
+            background-color: #ffffff;
+            padding: 32px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            width: 360px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 24px;
+            color: #1e3a8a;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 18px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            background-color: #fefefe;
+            font-size: 14px;
+            transition: border-color 0.2s ease-in-out;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #3b82f6;
+            outline: none;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background-color: #1d4ed8;
+            color: white;
+            padding: 10px;
+            font-size: 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2563eb;
+        }
+
+        a.back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #1d4ed8;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.2s ease-in-out;
+        }
+
+        a.back-link:hover {
+            color: #2563eb;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-box">
+        <h2>Edit Student Info</h2>
+        <form action="/update/{{ student[0] }}" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" name="name" value="{{ student[1] }}" required>
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" value="{{ student[2] }}" required>
+
+            <label for="dept">Department:</label>
+            <select name="dept" required>
+                {% for dept in ['CSE', 'IT', 'Cyber', 'ECE', 'AIDS'] %}
+                    <option value="{{ dept }}" {% if student[3] == dept %}selected{% endif %}>{{ dept }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="phone">Phone:</label>
+            <input type="number" name="phone" value="{{ student[4] }}" required>
+
+            <input type="submit" value="Update">
+        </form>
+
+        <a class="back-link" href="/students">Back to List</a>
+    </div>
+</body>
+</html>

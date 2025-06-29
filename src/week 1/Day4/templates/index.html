@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Arc - Feedback Form</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f8fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-box, .thankyou-box {
+            background-color: #ffffff;
+            padding: 32px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            width: 90%;
+            max-width: 500px;
+            max-height: 95vh;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .form-box.active,
+        .thankyou-box.active {
+            display: block;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 24px;
+            color: #1e3a8a;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 18px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            background-color: #fefefe;
+            font-size: 14px;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #3b82f6;
+            outline: none;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background-color: #1d4ed8;
+            color: white;
+            padding: 10px;
+            font-size: 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2563eb;
+        }
+
+        a {
+            color: #1d4ed8;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        a:hover {
+            color: #2563eb;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-box active" id="form-box">
+        <h2>Data Arc</h2>
+        <h2>Feedback Form</h2>
+        <form onsubmit="showThankYou(event)">
+            <label for="title">Title:</label>
+            <input type="text" name="title" required>
+
+            <label for="authory">Authory:</label>
+            <input type="text" name="authory" required>
+
+            <label for="content">Content:</label>
+            <textarea name="content" rows="4" required></textarea>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <div class="thankyou-box" id="thankyou">
+        <h2>Thank you for filling the Feedback Form</h2>
+        <a href="#" onclick="goBack()">Go Back to Feedback</a>
+    </div>
+
+    <script>
+        function showThankYou(event) {
+            event.preventDefault(); 
+            document.getElementById("form-box").classList.remove("active");
+            document.getElementById("thankyou").classList.add("active");
+        }
+
+        function goBack() {
+            document.getElementById("thankyou").classList.remove("active");
+            document.getElementById("form-box").classList.add("active");
+        }
+    </script>
+
+</body>
+</html>
