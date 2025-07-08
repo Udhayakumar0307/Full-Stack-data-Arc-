@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Users & Projects</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>Users and Their Projects</h1>
+    <hr>
+    <form method="POST" action="{{ url_for('list_users') }}">
+        <input type="text" name="name" placeholder="Enter User Name" required>
+        <button type="submit">Add User</button>
+    </form>
+
+    <hr>
+{% for user in users %}
+    <div class="user-block" id="user-{{ user.id }}">
+        <h2>{{ user.name }} (ID: {{ user.id }})</h2>
+
+        <form method="POST" action="{{ url_for('remove_user', id=user.id) }}">
+            <button type="submit">Delete User</button>
+        </form>
+
+
+
+            <h4>Projects</h4>
+            {% if user.projects %}
+                <ul>
+                    {% for project in user.projects %}
+                        <li>
+                            <strong>{{ project.title }}</strong><br>
+                            {% if project.image %}
+                                <img src="{{ url_for('static', filename='../uploads/' + project.image) }}" width="100"><br>
+                            {% endif %}
+                           
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No projects added yet.</p>
+            {% endif %}
+            <hr>
+            <h4>Add Project</h4>
+             <a href="{{ url_for('add_project') }}">Add Projects</a>
+
+            </form>
+        </div>
+    {% endfor %}
+    <a href="{{ url_for('home') }}">->Go to Home</a>
+</div>
+ 
+</body>
+</html>

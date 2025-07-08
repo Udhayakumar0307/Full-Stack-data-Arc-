@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Projects</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>Projects</h1>
+    <hr>
+    <form method="POST" enctype="multipart/form-data">
+        <label>Project Title</label>
+        <input type="text" name="title" required>
+        <label>Select User</label>
+        <select name="user_id" required>
+            {% for user in users %}
+                <option value="{{ user.id }}">{{ user.name }}</option>
+            {% endfor %}
+        </select>
+        <label>Project Image</label>
+        <input type="file" name="image" required>
+        <button type="submit">Add Project</button>
+    </form>
+    <hr>
+    {% for project in projects %}
+        <div class="user-block">
+            <h3>{{ project.title }} (ID: {{ project.id }})</h3>
+            <p>Owner: {{ project.owner.name }}</p>
+            {% if project.image %}
+                <img src="{{ url_for('static', filename='../uploads/' ~ project.image) }}" width="100">
+            {% endif %}
+            <form method="post" action="{{ url_for('remove_project', id=project.id) }}">
+                <button type="submit"> Delete</button>
+            </form>
+        </div>
+    {% endfor %}
+    <a href="{{ url_for('list_users') }}">⬅ Go to Users</a>
+</div>
+</body>
+</html>
